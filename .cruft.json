@@ -1,0 +1,18 @@
+{
+  "template": "https://github.com/schubergphilis/paleofuturistic_python",
+  "commit": "753c733bd0404d15563472e47bf43863a82f3123",
+  "checkout": "latest",
+  "context": {
+    "cookiecutter": {
+      "project_name": "clisechubman",
+      "project_slug": "clisechubman",
+      "project_description": "Development flow as Paleofuturistic Python",
+      "full_name": "Paleofuturistic Python",
+      "email": "me@here.now",
+      "python_version": "3.12",
+      "_template": "https://github.com/schubergphilis/paleofuturistic_python",
+      "_commit": "753c733bd0404d15563472e47bf43863a82f3123"
+    }
+  },
+  "directory": null
+}
