@@ -7,7 +7,9 @@ authors = [
     {name = "Paleofuturistic Python", email = "me@here.now"},
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "typer>=0.20.0",
+]
 classifiers = [
     # License
     "License :: OSI Approved :: Apache Software License",
@@ -60,3 +62,6 @@ ignore = [
 [tool.mypy]
 files = ["src/"]
 disallow_untyped_defs = true
+
+[project.scripts]
+clisechubman = "clisechubman.main:app"
