@@ -1,14 +1,27 @@
-def hello(someone: str = "you") -> str:
-    """Greet someone.
+import logging
+from pathlib import Path
 
-    Parameters
-    ----------
-    someone : str, default='you'
-        The name of the person to greet, by default 'you'
+import yaml
+from sechubman import Rule
 
-    Returns
-    -------
-    str
-        A greeting message
-    """
-    return f"Hello {someone} from clisechubman!"
+logger = logging.getLogger(__name__)
+
+
+def _validate_rules(rules_path: str = "rules.yaml") -> bool:
+    with Path(rules_path).open() as file:
+        rules = yaml.safe_load(file)["Rules"]
+
+    all_valid = True
+
+    for it, rule_dict in enumerate(rules, start=1):
+        logger.info(f"Validating rule '{it}'")
+        rule = Rule(**rule_dict)
+        if rule.is_deep_validated:
+            logger.info(
+                f"Rule '{it}' with note '{rule.UpdatesToFilteredFindings['Note']['Text']}' is valid."
+            )
+        else:
+            logger.error(f"Rule '{it}' is NOT valid.")
+            all_valid = False
+
+    return all_valid

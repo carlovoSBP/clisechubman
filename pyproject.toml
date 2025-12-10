@@ -8,6 +8,8 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
+    "pyyaml>=6.0.3",
+    "sechubman>=0.2.0",
     "typer>=0.20.0",
 ]
 classifiers = [
@@ -57,11 +59,14 @@ ignore = [
     "E114",
     # over-indented
     "E117",
+    # line-too-long
+    "E501",
 ]
 
 [tool.mypy]
 files = ["src/"]
 disallow_untyped_defs = true
+follow_untyped_imports = true
 
 [project.scripts]
 clisechubman = "clisechubman.main:app"

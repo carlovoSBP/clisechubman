@@ -1,0 +1,14 @@
+Rules:
+- Filters:
+    ResourceId:
+    - Value: arn:aws:s3:::carlo-test-security
+      Comparison: EQUALS
+    WorkflowStatus:
+    - Value: NEW
+      Comparison: EQUALS
+  UpdatesToFilteredFindings:
+    Workflow:
+      Status: SUPPRESSED
+    Notes:
+      Text: Test
+      UpdatedBy: sechubman
