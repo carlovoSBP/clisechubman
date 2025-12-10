@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/carlovoSBP/clisechubman/compare/v0.2.0...v0.3.0) (2025-12-10)
+
+
+### Features
+
+* apply rules from yaml file ([8abf9c7](https://github.com/carlovoSBP/clisechubman/commit/8abf9c798232389aab164a8141565a99aec9a5ed))
+* validate rules yaml file ([8f3ab58](https://github.com/carlovoSBP/clisechubman/commit/8f3ab5847646581529121a48d5aee559ac442226))
+
 ## [0.2.0](https://github.com/carlovoSBP/clisechubman/compare/v0.1.0...v0.2.0) (2025-12-09)
 
 
