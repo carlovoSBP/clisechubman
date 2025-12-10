@@ -17,6 +17,7 @@ $ [OPTIONS] COMMAND [ARGS]...
 **Commands**:
 
 * `validate-rules`: Validate the rules defined in the given...
+* `apply-rules`: Apply the rules defined in the given YAML...
 
 ## `validate-rules`
 
@@ -36,6 +37,29 @@ typer.Exit
 
 ```console
 $ validate-rules [OPTIONS] [RULES]
+```
+
+**Arguments**:
+
+* `[RULES]`: [default: rules.yaml]
+
+**Options**:
+
+* `--help`: Show this message and exit.
+
+## `apply-rules`
+
+Apply the rules defined in the given YAML file.
+
+Parameters
+----------
+rules : str, optional
+    Path to the rules YAML file, by default &quot;rules.yaml&quot;.
+
+**Usage**:
+
+```console
+$ apply-rules [OPTIONS] [RULES]
 ```
 
 **Arguments**:
