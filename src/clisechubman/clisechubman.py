@@ -25,3 +25,13 @@ def _validate_rules(rules_path: str = "rules.yaml") -> bool:
             all_valid = False
 
     return all_valid
+
+
+def _apply_rules(rules_path: str = "rules.yaml") -> None:
+    with Path(rules_path).open() as file:
+        rules = yaml.safe_load(file)["Rules"]
+
+    for it, rule_dict in enumerate(rules, start=1):
+        logger.info(f"Applying rule '{it}'")
+        rule = Rule(**rule_dict)
+        rule.apply()
