@@ -1,8 +1,11 @@
+import os
 from unittest import TestCase
 
 from typer.testing import CliRunner
 
 from clisechubman.main import app
+
+os.environ["AWS_DEFAULT_REGION"] = "eu-west-1"
 
 RUNNER = CliRunner()
 
