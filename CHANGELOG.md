@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/carlovoSBP/clisechubman/compare/v0.4.0...v0.4.1) (2025-12-11)
+
+
+### Bug Fixes
+
+* add lambda function package in release ([95fe092](https://github.com/carlovoSBP/clisechubman/commit/95fe09205a006318fd91efaa321805acb620b422))
+
 ## [0.4.0](https://github.com/carlovoSBP/clisechubman/compare/v0.3.0...v0.4.0) (2025-12-11)
 
 
