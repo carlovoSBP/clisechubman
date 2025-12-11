@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/carlovoSBP/clisechubman/compare/v0.3.0...v0.4.0) (2025-12-11)
+
+
+### Features
+
+* make executable as AWS Lambda function ([d5d3f24](https://github.com/carlovoSBP/clisechubman/commit/d5d3f2478c326ad1940823f0d8f0076e84720df2))
+
 ## [0.3.0](https://github.com/carlovoSBP/clisechubman/compare/v0.2.0...v0.3.0) (2025-12-10)
 
 
