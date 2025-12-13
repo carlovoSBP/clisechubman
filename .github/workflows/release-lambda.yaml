@@ -22,14 +22,16 @@ jobs:
           enable-uv-cache: false # No caching to ensure correct dependencies for publishing
           sync-uv: false
 
-      - name: Sync uv
+      - name: Sync uv for lambda
         run: uv export --frozen --all-extras --no-dev --no-editable -o requirements.txt
 
-      - name: Sync uv
+      - name: Pip install dependencies for lambda
         run: uv pip install --no-installer-metadata --no-compile-bytecode --python-platform x86_64-manylinux2014 --python 3.12 --target lambda_package -r requirements.txt
 
-      - name: Sync uv
-        run: zip -rq lambda_package.zip lambda_package
+      - name: Package lambda code
+        run: |
+          cd lambda_package
+          zip -rq ../lambda_package.zip .
 
       - name: Upload lambda_package.zip to release
         env:
