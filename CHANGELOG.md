@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/carlovoSBP/clisechubman/compare/v0.4.1...v0.4.2) (2025-12-13)
+
+
+### Bug Fixes
+
+* simplify lambda package folder structure ([9fdcda0](https://github.com/carlovoSBP/clisechubman/commit/9fdcda0aea081e283ff9634dae2c26e6c32d6dfe))
+
 ## [0.4.1](https://github.com/carlovoSBP/clisechubman/compare/v0.4.0...v0.4.1) (2025-12-11)
 
 
