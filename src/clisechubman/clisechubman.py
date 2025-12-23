@@ -1,6 +1,7 @@
 import logging
 from pathlib import Path
 
+import boto3
 import yaml
 from sechubman import Rule
 
@@ -31,7 +32,15 @@ def _apply_rules(rules_path: str = "rules.yaml") -> None:
     with Path(rules_path).open() as file:
         rules = yaml.safe_load(file)["Rules"]
 
+    securityhub_client = boto3.client("securityhub")
+
     for it, rule_dict in enumerate(rules, start=1):
-        logger.info(f"Applying rule '{it}'")
-        rule = Rule(**rule_dict)
-        rule.apply()
+        logger.info(
+            f"Applying rule '{it}' with note '{rule_dict['UpdatesToFilteredFindings']['Note']['Text']}'"
+        )
+        rule = Rule(
+            Filters=rule_dict["Filters"],
+            UpdatesToFilteredFindings=rule_dict["UpdatesToFilteredFindings"],
+            is_deep_validated=False,
+        )
+        rule.apply(securityhub_client=securityhub_client)
