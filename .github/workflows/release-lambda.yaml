@@ -22,11 +22,35 @@ jobs:
           enable-uv-cache: false # No caching to ensure correct dependencies for publishing
           sync-uv: false
 
-      - name: Sync uv for lambda
-        run: uv export --frozen --all-extras --no-dev --no-editable -o requirements.txt
+      # Sadly there appears to be no more elegant way to exclude certain packages when exporting requirements with uv/pip
+      - name: Define requirements for lambda package
+        run: |
+          echo "typer" > no-requirements.txt
+          uv export \
+            --frozen \
+            --all-extras \
+            --no-emit-package click \
+            --no-emit-package colorama \
+            --no-emit-package markdown-it-py \
+            --no-emit-package mdurl \
+            --no-emit-package pygments \
+            --no-emit-package rich \
+            --no-emit-package shellingham \
+            --no-emit-package typer \
+            --no-dev \
+            --no-editable \
+            -o requirements.txt
 
       - name: Pip install dependencies for lambda
-        run: uv pip install --no-installer-metadata --no-compile-bytecode --python-platform x86_64-manylinux2014 --python 3.12 --target lambda_package -r requirements.txt
+        run: |
+          uv pip install \
+            --excludes no-requirements.txt \
+            --no-installer-metadata \
+            --no-compile-bytecode \
+            --python-platform x86_64-manylinux2014 \
+            --python 3.12 \
+            --target lambda_package \
+            --requirements requirements.txt
 
       - name: Package lambda code
         run: |
