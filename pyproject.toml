@@ -1,6 +1,6 @@
 [project]
 name = "clisechubman"
-version = "0.4.2"
+version = "0.4.3"
 description = "Development flow as Paleofuturistic Python"
 readme = "README.md"
 authors = [
