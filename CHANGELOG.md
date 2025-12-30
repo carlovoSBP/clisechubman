@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.3](https://github.com/carlovoSBP/clisechubman/compare/v0.4.2...v0.4.3) (2025-12-30)
+
+
+### Bug Fixes
+
+* catch application logs in lambda context ([201eb5f](https://github.com/carlovoSBP/clisechubman/commit/201eb5faba5af60a8896b453244363eabe70702b))
+* exclude local only dependency typer in lambda package ([f109fb4](https://github.com/carlovoSBP/clisechubman/commit/f109fb4f329fa698da4b1b85ac79f5de43bddfe0))
+* make log output more sensible for applying rules ([b3db21e](https://github.com/carlovoSBP/clisechubman/commit/b3db21e6c5a85ddc263ba9c57dcf1efbb19a535e))
+
 ## [0.4.2](https://github.com/carlovoSBP/clisechubman/compare/v0.4.1...v0.4.2) (2025-12-13)
 
 
