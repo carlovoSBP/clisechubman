@@ -1,7 +1,7 @@
 {
   "template": "https://github.com/schubergphilis/paleofuturistic_python",
-  "commit": "753c733bd0404d15563472e47bf43863a82f3123",
-  "checkout": "latest",
+  "commit": "16b72ae073597208b3520e1d18f82954481bbd9b",
+  "checkout": null,
   "context": {
     "cookiecutter": {
       "project_name": "clisechubman",
@@ -10,8 +10,9 @@
       "full_name": "Paleofuturistic Python",
       "email": "me@here.now",
       "python_version": "3.12",
+      "include_apache_license": true,
       "_template": "https://github.com/schubergphilis/paleofuturistic_python",
-      "_commit": "753c733bd0404d15563472e47bf43863a82f3123"
+      "_commit": "16b72ae073597208b3520e1d18f82954481bbd9b"
     }
   },
   "directory": null
