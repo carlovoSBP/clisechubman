@@ -3,44 +3,52 @@ from pathlib import Path
 
 import boto3
 import yaml
-from sechubman import Rule
+from sechubman import Manager
 
 logger = logging.getLogger(__name__)
 
 
-def _validate_rules(rules_path: str = "rules.yaml") -> bool:
+SECURITYHUB_CLIENT = boto3.client("securityhub")
+
+
+def _get_rules(rules_path: str = "rules.yaml") -> dict:
     with Path(rules_path).open() as file:
-        rules = yaml.safe_load(file)["Rules"]
+        rules = yaml.safe_load(file)
+    return rules
+
+
+def _get_manager(rules: dict) -> Manager:
+    manager = (
+        Manager(**rules["ManagerConfig"], client=SECURITYHUB_CLIENT)
+        if "ManagerConfig" in rules
+        else Manager(client=SECURITYHUB_CLIENT)
+    )
+    return manager
+
+
+def _validate_rules(rules_path: str = "rules.yaml") -> bool:
+    rules = _get_rules(rules_path)
+    manager = _get_manager(rules)
 
     all_valid = True
 
-    for it, rule_dict in enumerate(rules, start=1):
+    for it, rule_dict in enumerate(rules["Rules"], start=1):
         logger.info(f"Validating rule '{it}'")
-        rule = Rule(**rule_dict)
-        if rule.is_deep_validated:
+        try:
+            rule = manager.set_rules([rule_dict])[0]
             logger.info(
                 f"Rule '{it}' with note '{rule.UpdatesToFilteredFindings['Note']['Text']}' is valid."
             )
-        else:
-            logger.error(f"Rule '{it}' is NOT valid.")
+        except Exception as e:
+            logger.error(f"Error validating rule '{it}': {e}")
             all_valid = False
 
     return all_valid
 
 
 def _apply_rules(rules_path: str = "rules.yaml") -> None:
-    with Path(rules_path).open() as file:
-        rules = yaml.safe_load(file)["Rules"]
+    rules = _get_rules(rules_path)
+    manager = _get_manager(rules)
 
-    securityhub_client = boto3.client("securityhub")
-
-    for it, rule_dict in enumerate(rules, start=1):
-        logger.info(
-            f"Applying rule '{it}' with note '{rule_dict['UpdatesToFilteredFindings']['Note']['Text']}'"
-        )
-        rule = Rule(
-            Filters=rule_dict["Filters"],
-            UpdatesToFilteredFindings=rule_dict["UpdatesToFilteredFindings"],
-            is_deep_validated=False,
-        )
-        rule.apply(securityhub_client=securityhub_client)
+    manager.set_rules(rules["Rules"])
+    manager.get_and_update_all()
