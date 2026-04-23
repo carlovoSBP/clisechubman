@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.5.0](https://github.com/carlovoSBP/clisechubman/compare/v0.4.2...v0.5.0) (2026-04-23)
+
+
+### Features
+
+* bump sechubman==1.0.1 ([0eac0ff](https://github.com/carlovoSBP/clisechubman/commit/0eac0ff716622bc37f3fa193d0ec12753d0d3f79))
+
+
+### Bug Fixes
+
+* catch application logs in lambda context ([201eb5f](https://github.com/carlovoSBP/clisechubman/commit/201eb5faba5af60a8896b453244363eabe70702b))
+* exclude local only dependency typer in lambda package ([f109fb4](https://github.com/carlovoSBP/clisechubman/commit/f109fb4f329fa698da4b1b85ac79f5de43bddfe0))
+* make log output more sensible for applying rules ([b3db21e](https://github.com/carlovoSBP/clisechubman/commit/b3db21e6c5a85ddc263ba9c57dcf1efbb19a535e))
+* unittest initiation ordering ([28d0299](https://github.com/carlovoSBP/clisechubman/commit/28d029982412753e09a5031860d39eb171e64c80))
+* update logic to breaking changes in sechubman ([97fe787](https://github.com/carlovoSBP/clisechubman/commit/97fe78711285a36d2b634dbba9fc01167695b5ce))
+
 ## [0.4.2](https://github.com/carlovoSBP/clisechubman/compare/v0.4.1...v0.4.2) (2025-12-13)
 
 
